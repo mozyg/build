@@ -91,7 +91,7 @@ build/%/CONTROL/prerm:
 		../../support/kernel.prerm > $@
 	chmod ugo+x $@
 
-build/arm.built-%: build/.unpacked-% ${DOCTOR_DIR}/webosdoctorp100ueu-wr-${WEBOS_VERSION}.jar
+build/arm.built-%: ${DOCTOR_DIR}/webosdoctorp100ueu-wr-${WEBOS_VERSION}.jar
 	mkdir -p build/arm/usr/palm/applications/${APP_ID}/additional_files/boot
 	( cd build/src-$*/linux-${KERNEL_VERSION} ; \
 	  yes '' | ${MAKE} ARCH=arm omap_sirloin_3430_defconfig ; \
