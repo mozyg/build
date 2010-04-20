@@ -15,9 +15,10 @@ include ../../support/kernel.mk
 #Override some rules
 build/src-%/linux-${KERNEL_VERSION}:
 	mkdir -p build/src-$*
-	git clone $(KERNEL_GIT) build/src-$*/linux-${KERNEL_VERSION} -b palm_lxc
+	git clone $(KERNEL_GIT) build/src-$*/linux-${KERNEL_VERSION}
+	git checkout origin/palm_lxc -b palm_lxc
 
 updated-${VERSION}: build/src-${VERSION}/linux-${KERNEL_VERSION}
-	cd build/src-${VERSION} && git pull
+	cd build/src-${VERSION}/linux-${KERNEL_VERSION} && git pull $(KERNEL_GIT) palm_lxc
 
 build/.unpacked-${VERSION}: updated-${VERSION}
